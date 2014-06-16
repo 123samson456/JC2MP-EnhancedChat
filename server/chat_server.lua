@@ -8,8 +8,6 @@ function CarChat:__init(args)
     self.globalchatcolor = Color.PaleGoldenRod
     self.carchatcolor = Color.LawnGreen
     self.teamchatcolor = Color.DeepSkyBlue
-    --team_1 = {}
-    --team_2 = {}
 end
 
 function CarChat:Join(args)
