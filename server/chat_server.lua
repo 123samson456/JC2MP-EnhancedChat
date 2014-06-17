@@ -91,12 +91,10 @@ function BetterChat:Chat(args)
                 else
                     if (tonumber(cmd_args[2]) <= 3) then
                         args.player:SendChatMessage("Please enter a value that is bigger 3",Color.FireBrick)
-                    end
-                    if (tonumber(cmd_args[2]) >= 40) then
+                    elseif (tonumber(cmd_args[2]) >= 40) then
                         args.player:SendChatMessage("Please enter a value that is less than 40",Color.FireBrick)
-                    end
-                    if tonumber(cmd_args[2]) == nil then
-                        args.player:SendChatMessage("Please enter a number",Color.FireBrick) 
+                    else
+                        args.player:SendChatMessage("Please enter a number",Color.FireBrick)
                     end
                 end
             elseif count >= 3 then
