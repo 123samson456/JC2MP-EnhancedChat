@@ -1,6 +1,6 @@
-class 'CarChat'
+class 'BetterChat'
 
-function CarChat:__init()
+function BetterChat:__init()
     Events:Subscribe("GameLoad",self,self.GameLoad)
     Events:Subscribe("KeyUp",self,self.KeyUp)
 
@@ -19,11 +19,11 @@ function CarChat:__init()
     self.localcolor = Color.Sienna
 end
 
-function CarChat:GameLoad()
+function BetterChat:GameLoad()
     self.toggle = 0
 end
 
-function CarChat:KeyUp(args)
+function BetterChat:KeyUp(args)
     if (args.key == self.key) then
         if self.toggle <= 2 then
             self.toggle = self.toggle + 1
@@ -37,19 +37,19 @@ function CarChat:KeyUp(args)
     end
 end
 
-function CarChat:GetPly1(ply)
+function BetterChat:GetPly1(ply)
     self.player = ply
 end
-function CarChat:GetPly2(ply2)
+function BetterChat:GetPly2(ply2)
     self.player2 = ply2
 end
-function CarChat:GetMsg1(msg)
+function BetterChat:GetMsg1(msg)
     self.text = tostring(msg)
     Chat:Print("[Local] "..self.player..": "..self.text,self.localcolor)
 end
-function CarChat:GetMsg2(msg2)
+function BetterChat:GetMsg2(msg2)
     self.text2 = tostring(msg2)
     Chat:Print("[Local] "..self.player2..": "..self.text2,self.localcolor)
 end
 
-carchat = CarChat()
+betterchat = BetterChat()
