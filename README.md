@@ -15,3 +15,13 @@ You can change the key in the init of the client file: self.key = "Your wished k
 Future ideas:
 - change the distance of Local Chat for every Single Player
 - MultiColor Chat Strings (at the moment really difficult to realize)
+
+Release: Version 1.1
+====================
+
+Changelog:
+
+- change local chat radius with /setlocal number and reset it with /setlocal
+- surpressing commands output (beginning with a "/")
+- removing unneeded network communication to save maximum bandwidth
+- every chat input is saved in the console. Allowing to save chat histories
