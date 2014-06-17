@@ -1,4 +1,4 @@
-class 'CarChat'
+class 'BetterChat'
 
 function CarChat:__init(args)
     Network:Subscribe("toggle", self, self.Mode)
@@ -10,22 +10,22 @@ function CarChat:__init(args)
     self.teamchatcolor = Color.DeepSkyBlue
 end
 
-function CarChat:Join(args)
+function BetterChat:Join(args)
     self.toggle = 0
     args.player:SetValue("chat",0)
     args.player:SetValue("team",math.random(1,2))
 end
 
-function CarChat:Mode(toggler)
+function BetterChat:Mode(toggler)
     self.toggle = tonumber(toggler)
 end
 
-function CarChat:Player(player)
+function BetterChat:Player(player)
     ply = player
     ply:SetValue("chat",self.toggle)
 end
 
-function CarChat:Chat(args)
+function BetterChat:Chat(args)
     self.chat = args.player:GetValue("chat")
     if self.chat == 0 then
         Chat:Broadcast("[Global] "..args.player:GetName()..": "..args.text,self.globalchatcolor)
@@ -63,4 +63,4 @@ function CarChat:Chat(args)
     end
 end
 
-carchat = CarChat()
+betterchat = BetterChat()
