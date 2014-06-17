@@ -10,10 +10,10 @@ function BetterChat:__init(args)
     self.localchatcolor = Color.Sienna
     self.teamchatcolor = Color.DeepSkyBlue
     self.distance = 20
+    self.toggle = 0
 end
 
 function BetterChat:Join(args)
-    self.toggle = 0
     args.player:SetValue("chat",0)
     args.player:SetValue("team",math.random(1,2))
     args.player:SetValue("loc_dist",nil)
