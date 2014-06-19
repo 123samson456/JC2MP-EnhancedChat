@@ -20,13 +20,10 @@ function BetterChat:KeyUp(args)
     if (args.key == self.key) then
         if self.toggle <= 2 then
             self.toggle = self.toggle + 1
-            Network:Send("toggle",tostring(self.toggle))
-            Network:Send("player",LocalPlayer)
         else
             self.toggle = 0
-            Network:Send("toggle",tostring(self.toggle))
-            Network:Send("player",LocalPlayer)
         end
+        Network:Send("toggle",self.toggle)
     end
 end
 
