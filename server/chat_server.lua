@@ -78,17 +78,19 @@ function BetterChat:Chat(args)
                 args.player:SetValue("loc_dist",nil)
                 args.player:SendChatMessage("Local Chat Radius has been changed to default",Color.Green)
             elseif count == 2 then
-                if (tonumber(cmd_args[2]) >= 3 and tonumber(cmd_args[2]) <= 40) then
-                    args.player:SetValue("loc_dist",tonumber(cmd_args[2]))
-                    args.player:SendChatMessage("You have changed the radius to "..cmd_args[2],Color.Green)
-                else
-                    if (tonumber(cmd_args[2]) <= 3) then
-                        args.player:SendChatMessage("Please enter a value that is bigger 3",Color.FireBrick)
-                    elseif (tonumber(cmd_args[2]) >= 40) then
-                        args.player:SendChatMessage("Please enter a value that is less than 40",Color.FireBrick)
+                if (tonumber(cmd_args[2]) != nil) then
+                    if (tonumber(cmd_args[2]) >= 3 and tonumber(cmd_args[2]) <= 40) then
+                        args.player:SetValue("loc_dist",tonumber(cmd_args[2]))
+                        args.player:SendChatMessage("You have changed the radius to "..cmd_args[2],Color.Green)
                     else
-                        args.player:SendChatMessage("Please enter a number",Color.FireBrick)
+                        if (tonumber(cmd_args[2]) <= 3) then
+                            args.player:SendChatMessage("Please enter a value that is bigger 3",Color.FireBrick)
+                        elseif (tonumber(cmd_args[2]) >= 40) then
+                            args.player:SendChatMessage("Please enter a value that is less than 40",Color.FireBrick)
+                        end
                     end
+                else
+                    args.player:SendChatMessage("Please enter a number",Color.FireBrick)
                 end
             elseif count >= 3 then
                 args.player:SendChatMessage("Wrong Format. Please use: /setformat number or /setformat to reset to default",Color.FireBrick)
