@@ -2,9 +2,8 @@ class 'BetterChat'
 
 function BetterChat:__init(args)
     Network:Subscribe("toggle", self, self.Mode)
-    Network:Subscribe("player", self, self.Player)
-    Events:Subscribe("PlayerChat", self, self.Chat)
     Events:Subscribe("PlayerJoin", self, self.Join)
+    Events:Subscribe("PlayerChat", self, self.Chat)
     self.globalchatcolor = Color.PaleGoldenRod
     self.carchatcolor = Color.LawnGreen
     self.localchatcolor = Color.Sienna
@@ -16,26 +15,20 @@ end
 function BetterChat:Join(args)
     args.player:SetValue("chat",0)
     args.player:SetValue("team",math.random(1,2))
-    args.player:SetValue("loc_dist",nil)
 end
 
-function BetterChat:Mode(toggler)
-    self.toggle = tonumber(toggler)
-end
-
-function BetterChat:Player(player)
-    ply = player
-    ply:SetValue("chat",self.toggle)
+function BetterChat:Mode(toggler, player)
+    player:SetValue("chat", toggler)
 end
 
 function BetterChat:Chat(args)
     if args.text:sub(1,1) != "/" then
-        self.chat = args.player:GetValue("chat")
-        if self.chat == 0 then
+        local chatsetting = args.player:GetValue("chat")
+        if chatsetting == 0 then
             Chat:Broadcast("[Global] "..args.player:GetName()..": "..args.text,self.globalchatcolor)
             print("[Global] "..args.player:GetName()..": "..args.text)
             return false
-        elseif self.chat == 1 then
+        elseif chatsetting == 1 then
             for player in Server:GetPlayers() do
                 if player:GetValue("team") == 1 then
                     player:SendChatMessage("[Team] "..args.player:GetName()..": "..args.text,self.teamchatcolor)
@@ -46,7 +39,7 @@ function BetterChat:Chat(args)
                 end
             end
             return false
-        elseif self.chat == 2 then
+        elseif chatsetting == 2 then
             for player in Server:GetPlayers() do
                 if (player:GetWorld() == args.player:GetWorld()) then
                     local dist = args.player:GetValue("loc_dist")
@@ -65,7 +58,7 @@ function BetterChat:Chat(args)
                     end
                 end
             end
-        elseif self.chat == 3 then
+        elseif chatsetting == 3 then
             if args.player:InVehicle() then
                 local vehicle = args.player:GetVehicle()
                 for index,player in ipairs(vehicle:GetOccupants()) do
