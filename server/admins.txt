@@ -1,0 +1,4 @@
+-- To add admins enter their SteamID without the comment prefix (--)
+-- These are just 2 examples:
+-- STEAM_0:0:12345678
+-- STEAM_0:0:87654321
