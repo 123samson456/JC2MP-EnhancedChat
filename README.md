@@ -18,9 +18,11 @@ Additional commands:
 
 The default radius can be changed in the init of the server file: self.distance = "amount of meters"
 
+With the release of v1.2 admin systems are supported. Just add admin SteamIDs in "server/admins.txt". They will be detected automatically when the module loads. 
+
 Future ideas:
-- change the distance of Local Chat for every Single Player (solved in v1.1)
 - MultiColor Chat Strings (at the moment really difficult to realize)
+
 
 Release: Version 1.1
 ====================
@@ -31,3 +33,10 @@ Changelog:
 - surpressing commands output (beginning with a "/")
 - removing unneeded network communication to save maximum bandwidth
 - every chat input is saved in the console. Allowing to save chat histories
+
+Release: Version 1.2
+====================
+
+Changelog:
+
+- admin support (add admins SteamIDs in "server/admins.txt" to prevent sending admin messages twice")
