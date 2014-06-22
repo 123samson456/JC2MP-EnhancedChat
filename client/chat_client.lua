@@ -10,6 +10,8 @@ function BetterChat:__init()
     -- 1 Team Chat
     -- 2 Local Chat
     -- 3 Car Chat
+    -- if the player is an admin the toggling wont have an effect
+    -- admins can be added in "server/admins.txt" by adding their SteamID
 end
 
 function BetterChat:GameLoad()
